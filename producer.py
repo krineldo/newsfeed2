@@ -98,7 +98,7 @@ while 1==1:
             media_wiki_call(n)
         # source_send(data_dict)
 
-    time.sleep(40)
+    time.sleep(7200)
 
 
 
