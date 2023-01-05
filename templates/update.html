@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Update{% endblock %}
+
+{%block content%}
+
+<form action="" method="post">
+
+    <p>Choose the keywords that you are interested in: <br>
+        <input type="checkbox" name="keyword" value="world_cup"> World cup <br>
+        <input type="checkbox" name="keyword" value="covid"> Covid <br>
+        <input type="checkbox" name="keyword" value="bitcoin"> Bitcoin <br>
+        <input type="checkbox" name="keyword" value="war"> War <br>
+        <input type="checkbox" name="keyword" value="nba"> NBA <br>
+        <input type="checkbox" name="keyword" value="python"> Python <br>
+        <input type="checkbox" name="keyword" value="ps5"> PlayStation5 <br>
+        <input type="checkbox" name="keyword" value="f1"> Formula-1 <br>
+    </p>
+
+
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+
+</form>
+
+{% endblock %}

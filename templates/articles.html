@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Here you can see articles{% endblock %}
+
+{% block content %}
+<body>
+    <table id="table" border="1">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Source name</th>
+            <th>URL</th>
+            
+        </tr>   
+            <!-- {{tasks[0].content}}    -->
+            {% for task_id in tasks %}
+                <tr>
+                    <form method="get" action="">
+                        <td>{{task_id.title}}</td>
+                        <td>{{task_id.description}}</td>
+                        <td><a href="{{ url_for('wiki', email=email, keyword=keyword, wiki=task_id.source['name']) }}" target="_blank">{{task_id.source['name']}}</a></td>
+                        <td><a href={{task_id.url}} target="_blank">{{task_id.url}}</a></td>
+                    </form>
+                </tr>
+            {% endfor %}
+    </table>
+</body>
+{% endblock %}

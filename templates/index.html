@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Register System{% endblock %}
+
+{% block content %}
+
+{% if message  %}
+    <div class="alert alert-secondary" role="alert">
+        <p>{{ message }}</p>
+    </div>
+{% endif %}
+
+<form method="post" action="/">
+    <div class="form-group">
+        <button type="submit" name="sign_up" value="push1" class="btn btn-primary" href="/register">Sign up</button>
+        <button type="submit" name="login" value="push2" class="btn btn-primary" href="/login">Log in</button>
+        <button type="submit" name="logout" value="push3" class="btn btn-primary" href="/logout">Log out</button>
+    </div>
+</form>
+
+
+{% endblock %}

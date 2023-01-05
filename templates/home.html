@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Here you can view all the articles that you are interested in{% endblock %}
+
+{% block content %}
+<p>Hello You have Logged in as {{ email }}</p>
+
+{% for keyword in keywords %}
+    <form method="get" action="{{ url_for('view', email=email, keyword=keyword) }}">
+
+
+        <button type="submit" class="btn active" >{{keyword}}</button>
+
+
+    </form>
+{% endfor %}
+
+
+<form method="get" action="{{ url_for('update', email=email) }}">
+    
+    <td>                        
+        <button type="submit" class="btn-danger active" >Update Keywords</button>
+        
+    </td>
+</form>
+
+
+
+{% endblock %}

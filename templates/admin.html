@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Login System{% endblock %}
+
+{% block content %}
+
+{% if message  %}
+    <div class="alert alert-secondary" role="alert">
+        <p>{{ message }}</p>
+    </div>
+{% endif %}
+
+
+<body>
+    <table id="table" border="1">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Location</th>
+            <th>Keywords</th>
+            <th>Delete</th>
+        </tr>      
+            {% for task_id in tasks %}
+                <tr>
+                    <form method="get" action="{{ url_for('delete', user_name=task_id.name) }}">
+                        <td>{{task_id.name}}</td>
+                        <td>{{task_id.email}}</td>
+                        <td>{{task_id.location}}</td>
+                        <td>{{task_id.keywords}}</td>
+                        <td>                        
+                            <button type="submit" class="btn active" >X</button>
+                            
+                        </td>
+                    </form>
+                </tr>
+            {% endfor %}
+    </table>
+</body>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Register System{% endblock %}
+
+{% block content %}
+
+{% if message  %}
+    <div class="alert alert-secondary" role="alert">
+        <p>{{ message }}</p>
+    </div>
+{% endif %}
+
+<form action="" method="post">
+    <div class="form-group">
+        <label for="Fullname">Full name</label>
+        <input name="fullname" class="form-control" id="inputFullName" aria-describedby="emailHelp" placeholder="Enter full name">
+        <small id="fullName" class="form-text text-muted">Please enter your full name(First name and Last name)</small>
+  </div>
+  <div class="form-group">
+        <label for="InputEmail">Email address</label>
+        <input name="email" class="form-control" id="InputEmail"  placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="InputPassword">Password</label>
+    <input type="password" name="password1" class="form-control" id="InputPassword" placeholder="Password">
+  </div>
+
+    <div class="form-group">
+    <label for="InputPassword2">Repeat Password</label>
+    <input type="password" name="password2" class="form-control" id="InputPassword2" placeholder="Repeat Password">
+
+  </div>
+
+  <div class="form-group">
+    <label for="location">Location</label>
+    <input name="location" class="form-control" id="location" aria-describedby="emailHelp" placeholder="Enter location">
+    <small id="location" class="form-text text-muted">Please enter your location</small>
+  </div>
+
+
+
+    <p>Choose the keywords that you are interested in: <br>
+        <input type="checkbox" name="keyword" value="world_cup"> World cup <br>
+        <input type="checkbox" name="keyword" value="covid"> Covid <br>
+        <input type="checkbox" name="keyword" value="bitcoin"> Bitcoin <br>
+        <input type="checkbox" name="keyword" value="war"> War <br>
+        <input type="checkbox" name="keyword" value="nba"> NBA <br>
+        <input type="checkbox" name="keyword" value="python"> Python <br>
+        <input type="checkbox" name="keyword" value="ps5"> PlayStation5 <br>
+        <input type="checkbox" name="keyword" value="f1"> Formula-1 <br>
+    </p>
+
+
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+
+</form>
+
+
+
+{% endblock %}
