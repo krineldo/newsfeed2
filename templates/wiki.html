@@ -8,7 +8,9 @@
                         {% if tasks != None  %}
                             <td>{{tasks.title['extract']}}</td>
                         {% else %}
-                            <td>No description for this source in Wikipedia!</td>
+                        {% for i in f %}
+                            <td>Sorry for the inconvenience, wikipedia does not have info about this source .However you can look for in this link:<a href={{i}}>{{i}}</a></td>
+                        {% endfor %}
                         {% endif %}
 
                 </form>

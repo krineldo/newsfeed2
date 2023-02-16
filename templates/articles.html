@@ -9,6 +9,7 @@
             <th>Description</th>
             <th>Source name</th>
             <th>URL</th>
+            <th>Recommendation</th>
             
         </tr>   
             <!-- {{tasks[0].content}}    -->
@@ -19,6 +20,10 @@
                         <td>{{task_id.description}}</td>
                         <td><a href="{{ url_for('wiki', email=email, keyword=keyword, wiki=task_id.source['name']) }}" target="_blank">{{task_id.source['name']}}</a></td>
                         <td><a href={{task_id.url}} target="_blank">{{task_id.url}}</a></td>
+                        <td>
+                            <a href="{{ url_for('recommend', email=email, keyword=keyword, id=task_id._id) }}">Recommend</a>
+                            
+                        </td>
                     </form>
                 </tr>
             {% endfor %}

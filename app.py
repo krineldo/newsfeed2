@@ -6,6 +6,10 @@ import bcrypt
 from bson.json_util import dumps
 from datetime import datetime
 from geopy.geocoders import Nominatim
+import networkx as nx
+from bson.objectid import ObjectId
+from googlesearch import search
+
 
 app = Flask(__name__)
 app.secret_key = "testing"
@@ -198,7 +202,7 @@ def view(email, keyword):
         #     key: {"title":1, "description":1,"url":1, "source":1},
             
         # })
-        #print(articles_coll[0])
+        # print(articles_coll[0])
         #
         # for article in articles_doc:
         #     # print(article, "\n\n")
@@ -214,9 +218,16 @@ def wiki(email,keyword,wiki):
     sources_coll = client["sources"]
     
     sources_doc = sources_coll.find_one({ "title.title": wiki},{"_id":False, 'title.extract':1}) #where title == wiki
+    f = ''
+    
+    f = search(wiki, num_results=1)
+    
+            
+    
+
     # for x in sources_doc:
     #     print(x)
-    return render_template("wiki.html", tasks=sources_doc)
+    return render_template("wiki.html", tasks=sources_doc, f=f)
 
 
 @app.route("/logout", methods=["POST", "GET"])
@@ -226,6 +237,31 @@ def logout():
         return render_template("signout.html")
     else:
         return render_template('index.html')
+
+@app.route('/home/<string:email>/<string:keyword>/recommendation/<string:id>', methods=["POST", "GET"])
+def recommend(email,keyword,id):
+    print("mpaino sti recommend")
+    articles_coll = client[keyword]
+    graph = nx.read_gexf("graph")
+    neighbors = graph.neighbors(id)
+    
+    # nums = []
+    # for n in graph.neighbors(id):
+    #     nums.append(graph.degree[n])
+
+    # print(max(nums))
+    max_degree_neighbor = max(neighbors, key=lambda x: graph.degree[x])
+
+    print(max_degree_neighbor)
+    try:
+        # articles_doc1 = articles_coll.find({}).sort("source", 1)
+        # print(articles_doc1[0])
+        articles_doc = articles_coll.find_one({"_id": ObjectId(max_degree_neighbor)},{"title":1, "description":1, "url":1})
+        # print(articles_doc)
+        return render_template("recommendation.html", tasks=articles_doc, email=email, keyword=keyword)
+    except Exception as e:
+        return dumps({'error': str(e)})
+
 
 
 # main

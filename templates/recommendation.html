@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Here you can see articles{% endblock %}
+
+{% block content %}
+<body>
+    <table id="table" border="1">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>URL</th>
+            
+        </tr>   
+            <tr>
+                <form method="get" action="">
+                        <td>{{tasks.title}}</td>
+                        <td>{{tasks.description}}</td>
+                        <td><a href={{tasks.url}} target="_blank">{{tasks.url}}</a></td>
+                </form>
+            </tr>
+    </table>
+</body>
+{% endblock %}
