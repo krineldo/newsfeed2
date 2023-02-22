@@ -4,7 +4,7 @@
 2: Make sure you run all the above services are running <br><br>
 3: Install all the packages in imports using pip install if they fail to install automatically, in files mongoDb.py, producer.py, consumer.py <br>
 
-4: Run files with this order: mongoDb.py, consumer.py, producer.py <br>
+4: Run files with this order: mongoDb.py, consumer.py, producer.py, network1.py, plotting.py (Inside PyhtonProject3)<br>
 (We run these 3 files with Pycharm separately. The consumer has to be running before you run the producer.)<br><br>
 5: Open VScode. Inside the project folder delete venv folder<br><br>
 6: run commands to create venv and install requirements: <br><br>
