@@ -73,12 +73,17 @@ def index():
 @app.route("/admin", methods=['post', 'get'])
 def admin():
     try:
+        
         mydoc = users_coll.find({"name": {"$ne": "admin"}}, {"_id": False, "email": 1, "name": 1, "keywords": 1,
                                                              "location": 1})
         return render_template("admin.html", tasks=mydoc)
     except Exception as e:
         return dumps({'error': str(e)})
+        
 
+@app.route("/admin/statistics", methods=['get'])
+def plotting():
+    return render_template("view_plot.html")
 
 @app.route("/admin/<string:user_name>", methods=['post', 'get'])
 def delete(user_name):

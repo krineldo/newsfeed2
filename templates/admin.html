@@ -34,6 +34,11 @@
                 </tr>
             {% endfor %}
     </table>
+
+    <form method="get" action="{{ url_for('plotting') }}">
+
+        <button type="submit" class="btn active" >View plot</button>
+    </form>
 </body>
 
 {% endblock %}
